@@ -8,3 +8,4 @@ boring vs party mode (toggle vis? or just two separate articles linked to each o
 responsive
 image alt
 toggle defaults to closed
+delete does not delete (feature, but maybe want prompt to archive or delete or something the first time)
