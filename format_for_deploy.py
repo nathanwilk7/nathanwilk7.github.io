@@ -14,7 +14,7 @@ input_base_dir_filepath = f'{input_filename_prefix}/{input_filename}'
 
 output_base_dir_filepath = '/Users/nate/Nate/nathanwilk7.github.io'
 page_title_replacements = {
-    'Blog.html': 'index.html',
+    'Home.html': 'index.html',
 }
 files_to_skip = {
     '.DS_Store',
