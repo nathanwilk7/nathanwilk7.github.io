@@ -61,6 +61,7 @@ and (min-device-width: 100px)
 and (max-device-width: 670px)
 and (
     (-webkit-min-device-pixel-ratio: 2)
+    or (-webkit-min-device-pixel-ratio: 3)
     or (-webkit-device-pixel-ratio: 2)
     or (-webkit-device-pixel-ratio: 3)
     or (-webkit-device-pixel-ratio: 4)
