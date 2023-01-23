@@ -59,7 +59,7 @@ style_override_end = '</style></head>'
 style_override = '''
 @media only screen 
   and (min-device-width: 100px) 
-  and (max-device-width: 568px)
+  and (max-device-width: 800px)
   and (-webkit-min-device-pixel-ratio: 2) 
 {
 	body {
