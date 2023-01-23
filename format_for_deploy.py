@@ -28,64 +28,69 @@ regex_to_remove = r'[0-9a-zA-Z]{32}'
 filepath_regex_to_remove = ' ' + regex_to_remove
 content_regex_to_remove = '%20' + regex_to_remove
 style_override_end = '</style></head>'
-'''
-@media only screen and (max-device-width: 1025px) {
-	body {
-		padding-left: 1rem;
-		padding-right: 1rem;
-		font-size: 2rem;
-	}
-	a {
-		font-size: 2rem;
-	}
-	h1 {
-		font-size: 2rem;
-	}
-	h2 {
-		font-size: 2rem;
-	}
-	h3 {
-		font-size: 2rem;
-	}
-	img {
-   		max-width: 100%;
-  	  	min-width: 500px;
- 	   	height: auto;
-	}
+# https://getbootstrap.com/docs/5.0/layout/breakpoints/
+# https://torquemag.io/2021/08/media-queries-guide/
+max_width_to_vals = {
+    '575.98': {
+        'font-size': '3',
+        'img_min_width': '200',
+    },
+    '767.98': {
+        'font-size': '3',
+        'img_min_width': '400',
+    },
+    '991.98': {
+        'font-size': '2',
+        'img_min_width': '500',
+    },
+    '1199.98': {
+        'font-size': '2',
+        'img_min_width': '500',
+    },
+    '1399.98': {
+        'font-size': '2',
+        'img_min_width': '500',
+    },
 }
-'''
+max_width_placeholder = 'MAXW'
+font_size_placeholder = 'FS'
+img_min_width_placeholder = 'IMINW'
 # https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
 # https://www.webmobilefirst.com/en/devices/apple-iphone-se-2020/
-style_override = '''
-@media only screen 
-  and (min-device-width: 100px) 
-  and (max-device-width: 800px)
-  and (-webkit-min-device-pixel-ratio: 2) 
-{
+initial_style_override = '''
+@media (max-width: MAXWpx) {
 	body {
 		padding-left: 1rem;
 		padding-right: 1rem;
-		font-size: 3rem;
+		font-size: FSrem;
 	}
 	a {
-		font-size: 3rem;
+		font-size: FSrem;
 	}
 	h1 {
-		font-size: 3rem;
+		font-size: Fsrem;
 	}
 	h2 {
-		font-size: 3rem;
+		font-size: FSrem;
 	}
 	h3 {
-		font-size: 3rem;
+		font-size: FSrem;
 	}
 	img {
    		max-width: 100%;
-  	  	min-width: 200px;
+  	  	min-width: IMINWpx;
  	   	height: auto;
 	}
 }
 '''
+temp_style_overrides = []
+for max_width, vals in max_width_to_vals.items():
+    temp_style_override = initial_style_override.replace(max_width_placeholder, max_width)
+    temp_style_override = temp_style_override.replace(font_size_placeholder, vals['font-size'])
+    temp_style_override = temp_style_override.replace(img_min_width_placeholder, vals['img_min_width'])
+    temp_style_overrides.append(temp_style_override)
+style_override = '\n'.join(temp_style_overrides)
+
 archived_str = '[ARCHIVED]'
 
 # Relative filepaths
