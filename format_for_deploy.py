@@ -57,7 +57,10 @@ style_override_end = '</style></head>'
 # https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
 # https://www.webmobilefirst.com/en/devices/apple-iphone-se-2020/
 style_override = '''
-@media only screen and (-webkit-min-device-pixel-ratio: 2)	
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) 
 {
 	body {
 		padding-left: 1rem;
