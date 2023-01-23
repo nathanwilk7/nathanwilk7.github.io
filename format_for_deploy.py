@@ -28,6 +28,7 @@ regex_to_remove = r'[0-9a-zA-Z]{32}'
 filepath_regex_to_remove = ' ' + regex_to_remove
 content_regex_to_remove = '%20' + regex_to_remove
 
+# https://stackoverflow.com/questions/9386429/simple-bootstrap-page-is-not-responsive-on-the-iphone
 head_override = '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />'
 
 style_override_end = '</style></head>'
