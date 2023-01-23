@@ -28,8 +28,10 @@ regex_to_remove = r'[0-9a-zA-Z]{32}'
 filepath_regex_to_remove = ' ' + regex_to_remove
 content_regex_to_remove = '%20' + regex_to_remove
 style_override_end = '</style></head>'
+# https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+
 style_override = '''
-@media only screen and (max-width:1000px) and (min-width: 501px) {
+@media only screen and (max-device-width: 1025px) {
 	body {
 		padding-left: 1rem;
 		padding-right: 1rem;
@@ -54,7 +56,17 @@ style_override = '''
 	}
 }
 	
-@media only screen and (max-width:2000px) {
+@media only screen
+and (min-device-width: 100px)
+and (max-device-width: 670px)
+and (
+    (-webkit-min-device-pixel-ratio: 2)
+    or (-webkit-device-pixel-ratio: 2)
+    or (-webkit-device-pixel-ratio: 3)
+    or (-webkit-device-pixel-ratio: 4)
+    )
+)
+{
 	body {
 		padding-left: 1rem;
 		padding-right: 1rem;

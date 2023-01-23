@@ -667,7 +667,7 @@ blockquote {
 }
 	
 
-@media only screen and (max-width:1000px) and (min-width: 501px) {
+@media only screen and (max-device-width: 1025px) {
 	body {
 		padding-left: 1rem;
 		padding-right: 1rem;
@@ -692,7 +692,17 @@ blockquote {
 	}
 }
 	
-@media only screen and (max-width:2000px) {
+@media only screen
+and (min-device-width: 100px)
+and (max-device-width: 670px)
+and (
+    (-webkit-min-device-pixel-ratio: 2)
+    or (-webkit-device-pixel-ratio: 2)
+    or (-webkit-device-pixel-ratio: 3)
+    or (-webkit-device-pixel-ratio: 4)
+    )
+)
+{
 	body {
 		padding-left: 1rem;
 		padding-right: 1rem;
