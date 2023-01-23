@@ -58,7 +58,7 @@ style_override_end = '</style></head>'
 # https://www.webmobilefirst.com/en/devices/apple-iphone-se-2020/
 style_override = '''
 @media only screen 
-  and (min-device-width: 320px) 
+  and (min-device-width: 100px) 
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) 
 {
