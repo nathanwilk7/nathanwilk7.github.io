@@ -27,6 +27,9 @@ dirs_to_skip = {
 regex_to_remove = r'[0-9a-zA-Z]{32}'
 filepath_regex_to_remove = ' ' + regex_to_remove
 content_regex_to_remove = '%20' + regex_to_remove
+
+head_override = '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />'
+
 style_override_end = '</style></head>'
 # https://getbootstrap.com/docs/5.0/layout/breakpoints/
 # https://torquemag.io/2021/08/media-queries-guide/
