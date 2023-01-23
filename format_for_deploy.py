@@ -31,6 +31,15 @@ content_regex_to_remove = '%20' + regex_to_remove
 head_override_start = '<html><head><meta'
 # https://stackoverflow.com/questions/9386429/simple-bootstrap-page-is-not-responsive-on-the-iphone
 head_override = '''
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEEFT9748K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEEFT9748K');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
