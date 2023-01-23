@@ -52,23 +52,23 @@ style_override_end = '</style></head>'
 max_width_to_vals = {
     '575.98': {
         'font-size': '2.2',
-        'img_min_width': '100',
+        'img_min_width': '25',
     },
     '767.98': {
         'font-size': '2.0',
-        'img_min_width': '200',
+        'img_min_width': '50',
     },
     '991.98': {
         'font-size': '1.8',
-        'img_min_width': '300',
+        'img_min_width': '100',
     },
     '1199.98': {
         'font-size': '1.6',
-        'img_min_width': '400',
+        'img_min_width': '200',
     },
     '1399.98': {
         'font-size': '1.4',
-        'img_min_width': '500',
+        'img_min_width': '400',
     },
 }
 max_width_placeholder = 'MAXW'
