@@ -30,30 +30,35 @@ content_regex_to_remove = '%20' + regex_to_remove
 
 head_override_start = '<html><head><meta'
 # https://stackoverflow.com/questions/9386429/simple-bootstrap-page-is-not-responsive-on-the-iphone
-head_override = '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />'
+head_override = '''
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+'''
 
 style_override_end = '</style></head>'
 # https://getbootstrap.com/docs/5.0/layout/breakpoints/
 # https://torquemag.io/2021/08/media-queries-guide/
 max_width_to_vals = {
     '575.98': {
-        'font-size': '2.25',
+        'font-size': '2.2',
         'img_min_width': '200',
     },
     '767.98': {
-        'font-size': '2',
+        'font-size': '2.0',
         'img_min_width': '400',
     },
     '991.98': {
-        'font-size': '1.75',
+        'font-size': '1.8',
         'img_min_width': '500',
     },
     '1199.98': {
-        'font-size': '1.5',
+        'font-size': '1.6',
         'img_min_width': '500',
     },
     '1399.98': {
-        'font-size': '1.25',
+        'font-size': '1.4',
         'img_min_width': '500',
     },
 }
@@ -96,7 +101,14 @@ for max_width, vals in max_width_to_vals.items():
     temp_style_overrides.append(temp_style_override)
 style_override = '\n'.join(temp_style_overrides)
 
-archived_str = '[ARCHIVED]'
+font_override_start = '</title><style>'
+font_override = '''
+body, h1, h2, h3, a, p {
+	font-family: 'DM Sans', sans-serif;
+	letter-spacing: .02em;
+	font-size: 1.2rem;
+}
+'''
 
 # Relative filepaths
 def all_filepaths(base_dir):
@@ -152,6 +164,14 @@ for input_filepath in filepaths:
                 style_override_index = content.find(style_override_end)
                 if style_override_index != -1:
                     content = content[:style_override_index] + style_override + content[style_override_index:]
+
+                # Add font override to end of style/head if found
+                font_override_index = content.find(font_override_start)
+                if font_override_index != -1:
+                    content = (
+                        content[:font_override_index + len(font_override_start)]
+                        + f'\n{font_override}'
+                        + content[font_override_index + len(font_override_start):])
                 w.write(content)
         # If this is not an HTML file
         else:
@@ -159,7 +179,6 @@ for input_filepath in filepaths:
             shutil.copyfile(full_input_filepath, full_output_filepath)
 
 
-# for any files the output directory with a timestamp less than the current one, ask whether to archive or delete them?
 print(f'Would you like to delete or skip?')
 print('d + enter) Delete')
 print('enter) Skip')
@@ -177,7 +196,7 @@ for filepath in all_filepaths(output_base_dir_filepath):
 
     full_filepath = f'{output_base_dir_filepath}/{filepath}'
     # if the timestamp is less than the script start time 
-    if archived_str not in full_filepath and os.path.getmtime(full_filepath) < script_start_time:
+    if os.path.getmtime(full_filepath) < script_start_time:
         print(filepath)
         response = input()
         if response == 'd':
