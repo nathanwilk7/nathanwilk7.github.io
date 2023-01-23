@@ -54,7 +54,7 @@ style_override = '''
 	}
 }
 	
-@media only screen and (max-width:500px) {
+@media only screen and (max-width:2000px) {
 	body {
 		padding-left: 1rem;
 		padding-right: 1rem;
