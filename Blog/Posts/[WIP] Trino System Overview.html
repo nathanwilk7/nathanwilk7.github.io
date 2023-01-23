@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Blog Setup</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[WIP] Trino System Overview</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -666,5 +666,54 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="9c93b9d0-ca7e-4ca5-ab8f-86bccaee4c8a" class="page sans"><header><h1 class="page-title">Blog Setup</h1></header><div class="page-body"><div><p id="d623529e-b42e-4f3e-9faf-93b865c175cc" class=""><a href="../../index.html">Blog</a> | <a href="../Posts.html">Posts</a> | <a href="../About%20Me.html">About Me</a> </p></div><p id="fa99de7a-a2cb-48ec-b927-1723db53a827" class="">Created <time>@January 22, 2023</time> </p><p id="5bb94266-eac6-4af0-9103-237fc88599d6" class="">Updated <time>@January 22, 2023</time> </p><ul id="e1a420a9-f3e6-422f-a196-ef491c39c94a" class="toggle"><li><details open=""><summary>Outline</summary><nav id="5bf88377-2f90-4c14-8be7-a1bfa0a8bda3" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#44ccaf34-0e65-46b9-ad28-e321f19549f6">Notion</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#749103a1-a6f0-4905-9fb2-5e82a1e25ce8">Script</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0db16637-8049-472c-bc39-adc938f0f9ce">GitHub Pages</a></div></nav></details></li></ul><h1 id="44ccaf34-0e65-46b9-ad28-e321f19549f6" class="">Notion</h1><p id="f2871516-7893-478d-9cf7-27a0933fc015" class="">Export <a href="../../index.html">Blog</a> to HTML with everything and subpages and folders for subpages.</p><h1 id="749103a1-a6f0-4905-9fb2-5e82a1e25ce8" class="">Script</h1><pre id="07dd2f1e-449c-45a9-b079-618c34299827" class="code code-wrap"><code>ls -ltr ~/Downloads</code></pre><p id="ba2ee032-9848-4230-8001-f11fb0265258" class="">Copy filename of export</p><pre id="950319a1-2fd3-427d-beda-a76945d57080" class="code code-wrap"><code>python format_for_deploy.py Export-609e69c9-b86c-4760-a97c-4c33210f9ed0</code></pre><h1 id="0db16637-8049-472c-bc39-adc938f0f9ce" class="">GitHub Pages</h1><figure id="d82570f9-4f68-4d2d-910c-1c53c5bb54c9"><div class="source">https://github.com/nathanwilk7/nathanwilk7.github.io</div></figure><p id="cf8c374a-b9bb-4657-9ab3-b0f28228a508" class="">
-</p></div></article></body></html>
+
+@media only screen and (max-width:1000px) and (min-width: 501px) {
+	body {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		font-size: 2rem;
+	}
+	a {
+		font-size: 2rem;
+	}
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 2rem;
+	}
+	h3 {
+		font-size: 2rem;
+	}
+	img {
+   		max-width: 100%;
+  	  	min-width: 500px;
+ 	   	height: auto;
+	}
+}
+	
+@media only screen and (max-width:500px) {
+	body {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		font-size: 3rem;
+	}
+	a {
+		font-size: 3rem;
+	}
+	h1 {
+		font-size: 3rem;
+	}
+	h2 {
+		font-size: 3rem;
+	}
+	h3 {
+		font-size: 3rem;
+	}
+	img {
+   		max-width: 100%;
+  	  	min-width: 200px;
+ 	   	height: auto;
+	}
+}
+</style></head><body><article id="92d354b3-a439-4a68-a3f0-63a08e400528" class="page sans"><header><h1 class="page-title">[WIP] Trino System Overview</h1></header><div class="page-body"><div><p id="d623529e-b42e-4f3e-9faf-93b865c175cc" class=""><a href="../../index.html">Blog</a> | <a href="../Posts.html">Posts</a> | <a href="../About%20Me.html">About Me</a> </p></div><p id="0a8ddb59-ee7b-4948-8f16-beb84f651492" class="">Created <time>@January 22, 2023</time> </p><p id="9a042224-5f18-4d2e-b874-57b849ef8d95" class="">Updated <time>@January 22, 2023</time> </p><p id="c3e19829-8fa0-4c08-8b9c-dbbe059a6e21" class=""><a href="https://github.com/trinodb/trino/tree/39f27db260b8359f4aa61220a595355d1f8b7cf8">Trino Version 405</a></p><ul id="0da9a18b-4d39-47ba-9de0-21ebab64fcc4" class="toggle"><li><details open=""><summary>Outline</summary></details></li></ul><figure id="5f490662-b7d8-4982-ab47-fbdc3de8afb2"><div class="source">https://whimsical.com/r-VrxBMzNdtDaGTnbUnqSnM8@2Ux7TurymNAx2ioqNYAF</div></figure><p id="a086f21d-5364-4ea4-a20f-cc7150d7c222" class="">note, can’t embed whimsical via notion, have to do screenshots and links to whimsical, probably makes more sense anyway…</p></div></article></body></html>

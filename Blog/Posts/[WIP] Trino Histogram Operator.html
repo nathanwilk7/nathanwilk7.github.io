@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Random Rambling</title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[WIP] Trino Histogram Operator</title><style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
@@ -666,6 +666,55 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
-</style></head><body><article id="5b53b50f-4d8e-4050-807d-5ac7acbedc23" class="page sans"><header><h1 class="page-title">Random Rambling</h1></header><div class="page-body"><div><p id="d623529e-b42e-4f3e-9faf-93b865c175cc" class=""><a href="../../index.html">Blog</a> | <a href="../Posts.html">Posts</a> | <a href="../About%20Me.html">About Me</a> </p></div><p id="7fd32cbd-a6f6-47fb-8527-1894bb304204" class="">i like cheesy gnocchi</p><figure id="9b0bd0f4-d5ad-4c02-9e22-54540ba6cf95" class="image"><a href="Random%20Rambling/Untitled.png"><img style="width:600px" src="Random%20Rambling/Untitled.png"/></a><figcaption>some alt</figcaption></figure><p id="122ef0a4-fe35-4770-993c-f0311db4c703" class="">bad meme joke</p><figure id="39583b2c-2598-45f1-9fb6-fad65bbaab78" class="image"><a href="Random%20Rambling/Untitled%201.png"><img style="width:640px" src="Random%20Rambling/Untitled%201.png"/></a></figure><p id="caf295a5-f45c-41e5-bb47-1c0c39d6c88c" class="">
-</p><p id="84c716bc-141f-4baf-baca-82498f245fba" class="">
+
+@media only screen and (max-width:1000px) and (min-width: 501px) {
+	body {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		font-size: 2rem;
+	}
+	a {
+		font-size: 2rem;
+	}
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 2rem;
+	}
+	h3 {
+		font-size: 2rem;
+	}
+	img {
+   		max-width: 100%;
+  	  	min-width: 500px;
+ 	   	height: auto;
+	}
+}
+	
+@media only screen and (max-width:500px) {
+	body {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		font-size: 3rem;
+	}
+	a {
+		font-size: 3rem;
+	}
+	h1 {
+		font-size: 3rem;
+	}
+	h2 {
+		font-size: 3rem;
+	}
+	h3 {
+		font-size: 3rem;
+	}
+	img {
+   		max-width: 100%;
+  	  	min-width: 200px;
+ 	   	height: auto;
+	}
+}
+</style></head><body><article id="fba974f5-2e5e-4fa0-b45a-fdb075c471d8" class="page sans"><header><h1 class="page-title">[WIP] Trino Histogram Operator</h1></header><div class="page-body"><div><p id="d623529e-b42e-4f3e-9faf-93b865c175cc" class=""><a href="../../index.html">Blog</a> | <a href="../Posts.html">Posts</a> | <a href="../About%20Me.html">About Me</a> </p></div><p id="72242d84-9d14-40cc-a12b-3a40c9edf842" class="">Created <time>@January 22, 2023</time> </p><p id="475bf7f4-1121-4293-9a27-4b1fe603578b" class="">Updated <time>@January 22, 2023</time> </p><p id="ba1e5cc3-7aae-4f51-8c8d-ea17fec81ffa" class=""><a href="https://github.com/trinodb/trino/tree/39f27db260b8359f4aa61220a595355d1f8b7cf8">Trino Version 405</a></p><ul id="24943964-71f6-4059-8b22-a684ce8d8884" class="toggle"><li><details open=""><summary>Outline</summary></details></li></ul><p id="d93ad851-4f0c-4610-8b86-596afe9d6362" class=""><code>select histogram(x) from unnest(array[1, 2, 1]) as t(x);</code></p><p id="6b85a7a9-1f18-469c-becb-49de3a3acd69" class="">
 </p></div></article></body></html>
