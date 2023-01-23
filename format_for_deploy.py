@@ -102,6 +102,7 @@ for max_width, vals in max_width_to_vals.items():
 style_override = '\n'.join(temp_style_overrides)
 
 font_override_start = '</title><style>'
+# https://www.typewolf.com/recommendations https://www.typewolf.com/google-fonts
 font_override = '''
 body, h1, h2, h3, a, p {
 	font-family: 'DM Sans', sans-serif;
