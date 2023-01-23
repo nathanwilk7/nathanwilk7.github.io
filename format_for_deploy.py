@@ -28,6 +28,7 @@ regex_to_remove = r'[0-9a-zA-Z]{32}'
 filepath_regex_to_remove = ' ' + regex_to_remove
 content_regex_to_remove = '%20' + regex_to_remove
 
+head_override_start = '<html><head><meta'
 # https://stackoverflow.com/questions/9386429/simple-bootstrap-page-is-not-responsive-on-the-iphone
 head_override = '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />'
 
@@ -36,23 +37,23 @@ style_override_end = '</style></head>'
 # https://torquemag.io/2021/08/media-queries-guide/
 max_width_to_vals = {
     '575.98': {
-        'font-size': '3',
+        'font-size': '2.25',
         'img_min_width': '200',
     },
     '767.98': {
-        'font-size': '3',
+        'font-size': '2',
         'img_min_width': '400',
     },
     '991.98': {
-        'font-size': '2',
+        'font-size': '1.75',
         'img_min_width': '500',
     },
     '1199.98': {
-        'font-size': '2',
+        'font-size': '1.5',
         'img_min_width': '500',
     },
     '1399.98': {
-        'font-size': '2',
+        'font-size': '1.25',
         'img_min_width': '500',
     },
 }
@@ -143,6 +144,10 @@ for input_filepath in filepaths:
                     content = content.replace(page_title, replacement)
             # Write file to output_base_dir
             with open(full_output_filepath, 'w') as w:
+                # Add head override to end of head if found
+                head_override_index = content.find(head_override_start)
+                if head_override_index != -1:
+                    content = content[:head_override_index + 12] + head_override + content[head_override_index + 12:]
                 # Add style override to end of style/head if found
                 style_override_index = content.find(style_override_end)
                 if style_override_index != -1:
