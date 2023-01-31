@@ -24,12 +24,13 @@ files_to_skip = {
 dirs_to_skip = {
     '.git',
 }
-regex_to_remove = r'[0-9a-zA-Z]{32}'
-filepath_regex_to_remove = ' ' + regex_to_remove
-content_regex_to_remove = '%20' + regex_to_remove
+regex_to_remove = r'( |%20)[0-9a-zA-Z]{32}'
 
-standard_replacements = {
+content_replacements = {
     r'%20': '-',
+}
+filepath_replacements = {
+    r' ': '-',
 }
 
 head_override_start = '<html><head><meta'
@@ -140,13 +141,14 @@ def all_filepaths(base_dir):
 script_start_time = int(time.time()) - 10
 
 filepaths = all_filepaths(input_base_dir_filepath)
+import pdb; pdb.set_trace()
 for input_filepath in filepaths:
     # Skip files to skip
     if input_filepath in files_to_skip:
         continue
 
-    output_filepath = re.sub(filepath_regex_to_remove, '', input_filepath)
-    for original, replacement in standard_replacements.items():
+    output_filepath = re.sub(regex_to_remove, '', input_filepath)
+    for original, replacement in filepath_replacements.items():
         output_filepath = re.sub(original, replacement, output_filepath)
     # If this is a page title replacement
     if output_filepath in page_title_replacements:
@@ -166,11 +168,11 @@ for input_filepath in filepaths:
             # Read file and replace 
             with open(full_input_filepath, 'r') as r:
                 content = r.read()
-                content = re.sub(content_regex_to_remove, '', content)
+                content = re.sub(regex_to_remove, '', content)
                 # replace page titles in content
                 for page_title, replacement in page_title_replacements.items():
                     content = content.replace(page_title, replacement)
-                for original, replacement in standard_replacements.items():
+                for original, replacement in content_replacements.items():
                     content = re.sub(original, replacement, content)
             # Write file to output_base_dir
             with open(full_output_filepath, 'w') as w:
