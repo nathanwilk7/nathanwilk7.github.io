@@ -141,7 +141,6 @@ def all_filepaths(base_dir):
 script_start_time = int(time.time()) - 10
 
 filepaths = all_filepaths(input_base_dir_filepath)
-import pdb; pdb.set_trace()
 for input_filepath in filepaths:
     # Skip files to skip
     if input_filepath in files_to_skip:
