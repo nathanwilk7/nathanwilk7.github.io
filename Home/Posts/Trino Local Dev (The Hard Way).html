@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>[WIP] Trino System Overview</title><style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Trino Local Dev (The Hard Way)</title><style>
 
 body, h1, h2, h3, a, p {
 	font-family: 'DM Sans', sans-serif;
@@ -680,11 +680,11 @@ blockquote {
 }
 
 .checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg-width%3D%2216%22-height%3D%2216%22-viewBox%3D%220-0-16-16%22-fill%3D%22none%22-xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect-width%3D%2216%22-height%3D%2216%22-fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath-d%3D%22M6.71429-12.2852L14-4.9995L12.7143-3.71436L6.71429-9.71378L3.28571-6.2831L2-7.57092L6.71429-12.2852Z%22-fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 
 .checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg-width%3D%2216%22-height%3D%2216%22-viewBox%3D%220-0-16-16%22-fill%3D%22none%22-xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect-x%3D%220.75%22-y%3D%220.75%22-width%3D%2214.5%22-height%3D%2214.5%22-fill%3D%22white%22-stroke%3D%22%2336352F%22-stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 	
 
@@ -816,4 +816,53 @@ blockquote {
  	   	height: auto;
 	}
 }
-</style></head><body><article id="92d354b3-a439-4a68-a3f0-63a08e400528" class="page sans"><header><h1 class="page-title">[WIP] Trino System Overview</h1></header><div class="page-body"><div id="b6d1254a-9ba9-42fc-8e1e-26ad931cce4a" class="column-list"><div id="a559b260-4665-454b-ab0c-f75900133e82" style="width:93.75%" class="column"><div><p id="d623529e-b42e-4f3e-9faf-93b865c175cc" class="">Data al dente</p><p id="7f8dacda-5257-4c3b-86df-a683e1b85c55" class=""><a href="../../index.html">Home</a> | <a href="../Posts.html">Posts</a> | <a href="../About%20Me.html">About Me</a></p></div></div><div id="25e488b4-bfdc-40c3-aeb0-d4b34db17c68" style="width:6.25%" class="column"><div><figure id="dfcdb875-0e7c-4fac-b437-eb47c691b053" class="image"><a href="bowtie-sq-256.png"><img style="width:256px" src="bowtie-sq-256.png"/></a></figure></div></div></div><p id="0a8ddb59-ee7b-4948-8f16-beb84f651492" class="">Created <time>@January 22, 2023</time> </p><p id="9a042224-5f18-4d2e-b874-57b849ef8d95" class="">Updated <time>@January 22, 2023</time> </p><p id="c3e19829-8fa0-4c08-8b9c-dbbe059a6e21" class=""><a href="https://github.com/trinodb/trino/tree/39f27db260b8359f4aa61220a595355d1f8b7cf8">Trino Version 405</a></p><ul id="0da9a18b-4d39-47ba-9de0-21ebab64fcc4" class="toggle"><li><details open=""><summary>Outline</summary></details></li></ul><figure id="5f490662-b7d8-4982-ab47-fbdc3de8afb2"><div class="source">https://whimsical.com/r-VrxBMzNdtDaGTnbUnqSnM8@2Ux7TurymNAx2ioqNYAF</div></figure><p id="a086f21d-5364-4ea4-a20f-cc7150d7c222" class="">note, can’t embed whimsical via notion, have to do screenshots and links to whimsical, probably makes more sense anyway…</p></div></article></body></html>
+</style></head><body><article id="cdec96ca-09b6-4963-a0d3-165e15f3e317" class="page sans"><header><h1 class="page-title">Trino Local Dev (The Hard Way)</h1></header><div class="page-body"><p id="1a9e1790-d97b-473a-a274-2784581c5c32" class=""><a href="https://github.com/trinodb/trino">https://github.com/trinodb/trino</a></p><p id="2b9ba8d0-6e0a-477f-83d1-cd0b16d8a376" class="">Need to start docker engine first</p><pre id="c3d4588b-7f7b-4a9d-af66-6690cc045709" class="code code-wrap"><code>./mvnw clean install -DskipTests</code></pre><p id="f959c6d5-e2a5-4f7c-809d-51341bca8b09" class="">Using IntelliJ community edition</p><p id="c1f122b4-c231-4549-af53-87b30ae9fcd3" class="">
+</p><p id="da144885-3377-4f83-8765-32fb3a11fab0" class="">can run going to try running tpchqueryrunner class via IDE</p><p id="4261c7af-93de-46ce-9e5a-9ba8db8238d0" class="">localhost:8080</p><p id="6efbdd12-f820-4fb5-bb0d-4fb3546a0e03" class="">
+</p><p id="8d320b71-576e-4a76-b3ed-ce1dc3103733" class="">does <code>mvn package</code> fail a test?</p><p id="ec90bdb1-5196-48c8-be34-02f1e360f71f" class="">
+</p><p id="fe3c3c51-cf8f-41f8-b625-fd25e1d9124e" class=""><a href="https://trino.io/docs/current/installation/deployment.html#python">https://trino.io/docs/current/installation/deployment.html#python</a></p><pre id="c6942dda-0a35-45fb-9fb7-f77dab254f58" class="code"><code>cd ~/DSRP/trino
+./mvnw clean install -DskipTests # remove skipTests to run tests obvy</code></pre><pre id="384d2d8b-7653-4c36-b9d1-d0b9a017d281" class="code"><code>cd ~/DSRP
+mkdir trinodata</code></pre><pre id="17a4d01d-ed54-49b5-bcff-b9acd79ac28b" class="code"><code>cd /Users/nate/DSRP/trino/core/trino-server/target/trino-server-406-SNAPSHOT
+mkdir etc
+cd etc</code></pre><pre id="0a044449-d614-4df9-beee-31e9c824b8eb" class="code"><code># config.properties
+coordinator=true
+node-scheduler.include-coordinator=true
+http-server.http.port=8080
+discovery.uri=http://localhost:8080</code></pre><pre id="02d6f586-92ef-435f-8116-e14b39af4127" class="code"><code># jvm.config
+-server
+-Xmx16G
+-XX:InitialRAMPercentage=80
+-XX:MaxRAMPercentage=80
+-XX:G1HeapRegionSize=32M
+-XX:+ExplicitGCInvokesConcurrent
+-XX:+ExitOnOutOfMemoryError
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-XX:ReservedCodeCacheSize=512M
+-XX:PerMethodRecompilationCutoff=10000
+-XX:PerBytecodeRecompilationCutoff=10000
+-Djdk.attach.allowAttachSelf=true
+-Djdk.nio.maxCachedBufferSize=2000000
+-XX:+UnlockDiagnosticVMOptions
+-XX:+UseAESCTRIntrinsics
+# Disable Preventive GC for performance reasons (JDK-8293861)
+-XX:-G1UsePreventiveGC</code></pre><pre id="7ed95279-a6fe-4427-bc9e-ff354792c889" class="code"><code># node.properties
+node.environment=production
+node.id=ffffffff-ffff-ffff-ffff-ffffffffffff
+node.data-dir=/Users/nate/DSRP/trinodata</code></pre><pre id="b95a9a58-7ed6-4712-8b19-e23c8f28dc09" class="code"><code>cd ..
+./bin/launcher run</code></pre><pre id="c29efac9-f248-4597-bb14-d9f637d66623" class="code"><code>cd /Users/nate/DSRP/trino/client/trino-cli/target
+java -jar trino-cli-406-SNAPSHOT-executable.jar</code></pre><p id="db28eaf1-cdb3-4610-8717-545dd85d4202" class="">
+</p><p id="72db4795-c7b6-4006-b39f-10131c7e721e" class="">for debugging</p><p id="2dd86eb5-3302-4cc1-b6f4-4cd1ca43e264" class="">better just add to top of <code>etc/jvm.config</code></p><pre id="dad4bf64-aecd-4751-b204-67ec58588ddf" class="code code-wrap"><code>-agentlib:jdwp=transport=dt_socket,address=9876,server=y,suspend=n</code></pre><p id="3449a538-9292-465a-baf9-3bc65f460242" class="">can add multiple colon separated sourcepaths to jdb to get list and other src stuff working</p><pre id="e455c219-31fb-45ad-81b9-c5fef061d30e" class="code code-wrap"><code>jdb -sourcepath core/trino-main/src/main/java -attach localhost:9876</code></pre><p id="8cf1c4cf-82b3-4bdd-b917-c0c6276d9f65" class="">ran launcher</p><p id="de9a7b46-79b9-4292-84b3-03d2b98cef4d" class="">ran client as normal</p><pre id="b8df93be-3eec-40b2-a90f-26d723c22fbd" class="code code-wrap"><code>jdb -attach localhost:9876
+stop at io.trino.server.protocol.Query.create
+# run &quot;select 1;&quot; from client
+where
+threads
+print session
+list
+step over
+step in
+step out
+# ctrl-d to exit</code></pre><p id="c8467eba-a27f-4103-9bf4-5671b19854dd" class="">can i put debug config in jvm file? yes, just add at top</p><p id="f04bfa75-f3f2-4364-a17c-00f3eebcc7e5" class="">
+</p><p id="5c1dfe12-d4d4-427d-b420-d21d1c84188c" class="">what is the RPM and other launchers from find? i think some fancy thing for linux</p><p id="d4fecda4-8aa6-4f19-ab43-2d7892732122" class="">there’s lots of query runner classes for other things like iceberg, etc</p><p id="3e9a8a45-4117-46b9-aaf6-0efb536a755a" class="">develomentserver (errs becase missing config, prob need to add files somewhere…)</p><p id="c749f612-400d-498a-809c-5395a64a49d5" class="">there’s a client cli you run via jar? example cmd in trino dev cheat sheet? <code>client/trino-cli/target/trino-cli-*-executable.jar --debug --server localhost:8080</code></p><p id="f203642e-deda-43f3-bd03-4075aee21caa" class="">catalogs are config’d via etc catalog files i think</p><p id="5b14f166-45b6-4775-ace7-e55d985a75ef" class="">provisio</p><p id="dd630d27-78fb-4b57-a62e-89c732796524" class="">Launcher for Airlift applications</p><p id="82d759a3-24bf-4618-8f0a-40c333523fef" class="">the unit test story seems pretty dang nice</p><p id="b5f29e0a-25a6-442e-833d-359daed9d1ce" class=""><code>git checkout 405</code>, <code>git checkout -b nate/405-code-tour-&lt;component&gt;</code></p><p id="a1d374b3-fc28-4e8b-9776-bc205b8b53f3" class="">
+</p><p id="779cb1b1-2516-4e1a-b10e-127518fdb68a" class="">you should probably ignore all this and just look at <a href="https://gist.github.com/findepi/04c96f0f60dcc95329f569bb0c44a0cd">https://gist.github.com/findepi/04c96f0f60dcc95329f569bb0c44a0cd</a></p><p id="64aec0d0-dba3-4773-bbce-de6c1877bb52" class="">
+</p><p id="2e64fa11-b0d3-4bfc-bfc9-4902a8ae88d9" class="">
+</p></div></article></body></html>

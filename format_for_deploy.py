@@ -28,6 +28,10 @@ regex_to_remove = r'[0-9a-zA-Z]{32}'
 filepath_regex_to_remove = ' ' + regex_to_remove
 content_regex_to_remove = '%20' + regex_to_remove
 
+standard_replacements = {
+    r'%20': '-',
+}
+
 head_override_start = '<html><head><meta'
 # https://stackoverflow.com/questions/9386429/simple-bootstrap-page-is-not-responsive-on-the-iphone
 head_override = '''
@@ -142,6 +146,8 @@ for input_filepath in filepaths:
         continue
 
     output_filepath = re.sub(filepath_regex_to_remove, '', input_filepath)
+    for original, replacement in standard_replacements.items():
+        output_filepath = re.sub(original, replacement, output_filepath)
     # If this is a page title replacement
     if output_filepath in page_title_replacements:
         output_filepath = page_title_replacements[output_filepath]
@@ -164,6 +170,8 @@ for input_filepath in filepaths:
                 # replace page titles in content
                 for page_title, replacement in page_title_replacements.items():
                     content = content.replace(page_title, replacement)
+                for original, replacement in standard_replacements.items():
+                    content = re.sub(original, replacement, content)
             # Write file to output_base_dir
             with open(full_output_filepath, 'w') as w:
                 # Add head override to end of head if found
