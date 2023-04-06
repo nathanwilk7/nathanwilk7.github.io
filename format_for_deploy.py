@@ -60,15 +60,15 @@ style_override_end = '</style></head>'
 # https://torquemag.io/2021/08/media-queries-guide/
 max_width_to_vals = {
     '575.98': {
-        'font-size': '2.2',
-        'img_min_width': '36',
-    },
-    '767.98': {
         'font-size': '2.0',
         'img_min_width': '36',
     },
-    '991.98': {
+    '767.98': {
         'font-size': '1.8',
+        'img_min_width': '36',
+    },
+    '991.98': {
+        'font-size': '1.7',
         'img_min_width': '36',
     },
     '1199.98': {
@@ -104,6 +104,9 @@ initial_style_override = '''
 	h3 {
 		font-size: FSrem;
 	}
+    p {
+        font-size: FSrem;
+    }
 	img {
    		max-width: 90%;
   	  	min-width: IMINWpx;
