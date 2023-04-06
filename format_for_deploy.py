@@ -18,8 +18,12 @@ page_title_replacements = {
 }
 files_to_skip = {
     '.DS_Store',
-    'format_for_deploy.py',
+    '.nojekyll',
+    'CNAME',
     'README.md',
+    'format_for_deploy.py',
+    'robots.txt',
+    'sitemap.txt',
 }
 dirs_to_skip = {
     '.git',
