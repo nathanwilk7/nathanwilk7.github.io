@@ -32,6 +32,9 @@ regex_to_remove = r'( |%20)[0-9a-zA-Z]{32}'
 
 content_replacements = {
     r'%20': '-',
+    r'TEXTAREA': '<textarea style="width: 100%; font-family: monospace;" rows="5" placeholder="Enter text here (scratch space)"></textarea>',
+    r'<details open="">' : '<details>',
+    r'<summary>' : '<summary style="cursor: pointer">',
 }
 filepath_replacements = {
     r' ': '-',
