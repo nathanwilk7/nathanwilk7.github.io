@@ -25,6 +25,8 @@ files_to_skip = {
     'format_for_deploy.py',
     'robots.txt',
     'sitemap.txt',
+    'prism.js',
+    'prism.css',
 }
 dirs_to_skip = {
     '.git',
@@ -37,6 +39,7 @@ content_replacements = {
     r'<details open="">' : '<details>',
     r'<summary>' : '<summary style="cursor: pointer">',
     r'(?P<myprefix><pre id="([a-z0-9]| |-)+" class="([a-z0-9]| |-)+")>': lambda matchobject: matchobject.group('myprefix') + 'style="overflow-x:auto;"' + '>',
+    r'(?P<pretag><pre[^<>]*>)<code>(?P<prismalias>[a-z]+)':  lambda matchobject: matchobject.group('pretag') + '<code class="language-' + matchobject.group('prismalias') + '">',
 }
 filepath_replacements = {
     r' ': '-',
@@ -58,6 +61,10 @@ head_override = '''
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+'''
+
+code_head_override = '''
+<link href="REPLACE_WITH_RELATIVE_PATH_TO_ROOT/prism.css" rel="stylesheet" />
 '''
 
 style_override_end = '</style></head>'
@@ -137,23 +144,33 @@ body, h1, h2, h3, a, p {
 }
 '''
 
+code_end_of_body_script_additions = '''
+<script src="REPLACE_WITH_RELATIVE_PATH_TO_ROOT/prism.js"></script>
+'''
+
+
 # Relative filepaths
 def all_filepaths(base_dir):
     import os
-    filepaths = []
+    filepaths_and_paths_to_root = []
     for dirpath, dirnames, filenames in os.walk(base_dir):
         for filename in filenames:
             filepath = os.path.join(dirpath, filename)
             # Remove the base dir from the filepath
             filepath = filepath.replace(base_dir, '')
-            filepaths.append(filepath.strip('/'))
-    return filepaths
+            # get the path to the root
+            path_from_root = filepath.lstrip(base_dir)
+            num_slashes_to_root = path_from_root.count('/')
+            filepaths_and_paths_to_root.append((
+                filepath.strip('/'),
+                '/'.join(['..'] * num_slashes_to_root)))
+    return filepaths_and_paths_to_root
 
 # current timestamp (w/ 10 seconds of buffer)
 script_start_time = int(time.time()) - 10
 
-filepaths = all_filepaths(input_base_dir_filepath)
-for input_filepath in filepaths:
+filepaths_and_paths_to_root = all_filepaths(input_base_dir_filepath)
+for input_filepath, path_to_root in filepaths_and_paths_to_root:
     # Skip files to skip
     if input_filepath in files_to_skip:
         continue
@@ -190,7 +207,11 @@ for input_filepath in filepaths:
                 # Add head override to end of head if found
                 head_override_index = content.find(head_override_start)
                 if head_override_index != -1:
-                    content = content[:head_override_index + 12] + head_override + content[head_override_index + 12:]
+                    if '<code' in content:
+                        temp = head_override + code_head_override
+                    else:
+                        temp = head_override
+                    content = content[:head_override_index + 12] + temp + content[head_override_index + 12:]
                 # Add style override to end of style/head if found
                 style_override_index = content.find(style_override_end)
                 if style_override_index != -1:
@@ -203,6 +224,9 @@ for input_filepath in filepaths:
                         content[:font_override_index + len(font_override_start)]
                         + f'\n{font_override}'
                         + content[font_override_index + len(font_override_start):])
+                if '<code' in content:
+                    content = content.replace('</body>', code_end_of_body_script_additions + '</body>')
+                content = content.replace('REPLACE_WITH_RELATIVE_PATH_TO_ROOT', path_to_root)
                 w.write(content)
         # If this is not an HTML file
         else:
@@ -214,7 +238,7 @@ print(f'Would you like to delete or skip?')
 print('d + enter) Delete')
 print('enter) Skip')
 print()
-for filepath in all_filepaths(output_base_dir_filepath):
+for filepath, _ in all_filepaths(output_base_dir_filepath):
     if filepath in files_to_skip:
         continue
     
