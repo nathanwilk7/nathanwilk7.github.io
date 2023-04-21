@@ -6,11 +6,12 @@ import time
 
 
 # assume input filename is in downloads, unless provided as second arg, first arg is input filename
-input_filename = sys.argv[1]
-input_filename_prefix = '/Users/nate/Downloads'
-if len(sys.argv) > 2:
-    input_filename_prefix = sys.argv[2]
-input_base_dir_filepath = f'{input_filename_prefix}/{input_filename}'
+# input_filename = sys.argv[1]
+# import pdb; pdb.set_trace()
+# input_filename_prefix = '/Users/nate/Downloads'
+# if len(sys.argv) > 2:
+#     input_filename_prefix = sys.argv[2]
+input_base_dir_filepath = os.path.expanduser(sys.argv[1])
 
 output_base_dir_filepath = '/Users/nate/Nate/nathanwilk7.github.io'
 page_title_replacements = {
@@ -35,6 +36,7 @@ content_replacements = {
     r'TEXTAREA': '<textarea style="width: 100%; font-family: monospace;" rows="5" placeholder="Enter text here (scratch space)"></textarea>',
     r'<details open="">' : '<details>',
     r'<summary>' : '<summary style="cursor: pointer">',
+    r'(?P<myprefix><pre id="([a-z0-9]| |-)+" class="([a-z0-9]| |-)+")>': lambda matchobject: matchobject.group('myprefix') + 'style="overflow-x:auto;"' + '>',
 }
 filepath_replacements = {
     r' ': '-',
