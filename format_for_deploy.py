@@ -41,6 +41,9 @@ content_replacements = {
     r'(?P<myprefix><pre id="([a-z0-9]| |-)+" class="([a-z0-9]| |-)+")>': lambda matchobject: matchobject.group('myprefix') + 'style="overflow-x:auto;"' + '>',
     r'(?P<pretag><pre[^<>]*>)<code>(?P<prismalias>[a-z]+)':  lambda matchobject: matchobject.group('pretag') + '<code class="language-' + matchobject.group('prismalias') + '">',
 }
+content_replacements_dot_all = {
+    r'(?P<prefix>\.code > code {.*font-size: )\d+%': lambda matchobject: matchobject.group('prefix') + '90%',
+}
 filepath_replacements = {
     r' ': '-',
 }
@@ -72,23 +75,23 @@ style_override_end = '</style></head>'
 # https://torquemag.io/2021/08/media-queries-guide/
 max_width_to_vals = {
     '575.98': {
-        'font-size': '2.0',
-        'img_min_width': '36',
-    },
-    '767.98': {
-        'font-size': '1.8',
-        'img_min_width': '36',
-    },
-    '991.98': {
-        'font-size': '1.7',
-        'img_min_width': '36',
-    },
-    '1199.98': {
         'font-size': '1.6',
         'img_min_width': '36',
     },
-    '1399.98': {
+    '767.98': {
+        'font-size': '1.5',
+        'img_min_width': '36',
+    },
+    '991.98': {
         'font-size': '1.4',
+        'img_min_width': '36',
+    },
+    '1199.98': {
+        'font-size': '1.3',
+        'img_min_width': '36',
+    },
+    '1399.98': {
+        'font-size': '1.2',
         'img_min_width': '36',
     },
 }
@@ -196,12 +199,15 @@ for input_filepath, path_to_root in filepaths_and_paths_to_root:
             # Read file and replace 
             with open(full_input_filepath, 'r') as r:
                 content = r.read()
+                # import pdb; pdb.set_trace()
                 content = re.sub(regex_to_remove, '', content)
                 # replace page titles in content
                 for page_title, replacement in page_title_replacements.items():
                     content = content.replace(page_title, replacement)
                 for original, replacement in content_replacements.items():
                     content = re.sub(original, replacement, content)
+                for original, replacement in content_replacements_dot_all.items():
+                    content = re.sub(original, replacement, content, 1, re.DOTALL)
             # Write file to output_base_dir
             with open(full_output_filepath, 'w') as w:
                 # Add head override to end of head if found
