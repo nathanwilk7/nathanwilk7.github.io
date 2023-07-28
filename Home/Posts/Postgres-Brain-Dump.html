@@ -306,6 +306,10 @@ ol > li {
 	margin-right: 1em;
 }
 
+.page-description {
+    margin-bottom: 2em;
+}
+
 .simple-table {
 	margin-top: 1em;
 	font-size: 0.875rem;
@@ -660,6 +664,7 @@ blockquote {
 .block-color-red_background {
 	background: rgba(253, 235, 236, 1);
 }
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
 .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
 .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
 .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
@@ -670,6 +675,8 @@ blockquote {
 .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
 .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
 .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
 
 .checkbox {
 	display: inline-flex;
@@ -833,7 +840,7 @@ blockquote {
  	   	height: auto;
 	}
 }
-</style></head><body><article id="781a9449-200b-4214-833c-2960dae1ea76" class="page sans"><header><h1 class="page-title">Postgres Brain Dump</h1></header><div class="page-body"><p id="4e70bf87-2a8d-418f-9087-3edcf16378e3" class="">Reset sequence (eg for primary key serial) back to 1</p><p id="4e898704-3247-457b-bdca-c3bf61280bb1" class=""><code>ALTER SEQUENCE &lt;tablename&gt;_&lt;id&gt;_seq RESTART WITH 1</code></p><p id="0d503259-610e-4878-9580-436d3cc83765" class=""><a href="https://stackoverflow.com/questions/3819292/reset-postgresql-primary-key-to-1">https://stackoverflow.com/questions/3819292/reset-postgresql-primary-key-to-1</a></p><p id="975bd45b-245a-40a1-acc2-458175964c03" class="">
+</style></head><body><article id="781a9449-200b-4214-833c-2960dae1ea76" class="page sans"><header><h1 class="page-title">Postgres Brain Dump</h1><p class="page-description"></p></header><div class="page-body"><p id="4e70bf87-2a8d-418f-9087-3edcf16378e3" class="">Reset sequence (eg for primary key serial) back to 1</p><p id="4e898704-3247-457b-bdca-c3bf61280bb1" class=""><code>ALTER SEQUENCE &lt;tablename&gt;_&lt;id&gt;_seq RESTART WITH 1</code></p><p id="0d503259-610e-4878-9580-436d3cc83765" class=""><a href="https://stackoverflow.com/questions/3819292/reset-postgresql-primary-key-to-1">https://stackoverflow.com/questions/3819292/reset-postgresql-primary-key-to-1</a></p><p id="975bd45b-245a-40a1-acc2-458175964c03" class="">
 </p><p id="26ab8664-4c56-437f-a2a6-a8b6ad607ae8" class="">
 </p></div></article>
 <script src="../../prism.js"></script>

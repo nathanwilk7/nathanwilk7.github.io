@@ -7,13 +7,12 @@ import time
 
 # assume input filename is in downloads, unless provided as second arg, first arg is input filename
 # input_filename = sys.argv[1]
-# import pdb; pdb.set_trace()
 # input_filename_prefix = '/Users/nate/Downloads'
 # if len(sys.argv) > 2:
 #     input_filename_prefix = sys.argv[2]
 input_base_dir_filepath = os.path.expanduser(sys.argv[1])
 
-output_base_dir_filepath = '/Users/nate/Nate/nathanwilk7.github.io'
+output_base_dir_filepath = os.getcwd() #'/Users/nate/Nate/nathanwilk7.github.io'
 page_title_replacements = {
     'Home.html': 'index.html',
 }
@@ -199,7 +198,6 @@ for input_filepath, path_to_root in filepaths_and_paths_to_root:
             # Read file and replace 
             with open(full_input_filepath, 'r') as r:
                 content = r.read()
-                # import pdb; pdb.set_trace()
                 content = re.sub(regex_to_remove, '', content)
                 # replace page titles in content
                 for page_title, replacement in page_title_replacements.items():
